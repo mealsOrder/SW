@@ -1,25 +1,26 @@
 #include<iostream>
-#include<vector>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
-int dp[22][10002];
+
+// solving time : 30 min 
+
+int dp[22][10001];
+int V[22];
+int Kal[22];
 
 int N,L;
 
-int cnt[22];
-int cal[22];
-
-
 void init(){
+	
 	for(int i=0;i<=N;i++){
-		cnt[i]=0;
-		cal[i]=0;
-		for(int j=0;j<=N;j++){
-			dp[i][j]=0;
+		for(int j=0;j<=L;j++){
+			dp[i][j] = 0;
 		}
 	}
+	
 }
 
 int main(){
@@ -32,32 +33,34 @@ int main(){
 		
 		cin >> N >> L;
 		
-		init();
 		for(int i=1;i<=N;i++){
-			cin >> cnt[i] >> cal[i];
+			cin >> V[i];
+			cin >> Kal[i];
 		}
+		
+		init();
 		
 		for(int i=1;i<=N;i++){
 			for(int j=1;j<=L;j++){
 				
-				// do not input cal[i]
-				if(j<cal[i]){
+				// Can't input Kal[i]
+				if(Kal[i] > j ){
 					dp[i][j] = dp[i-1][j];
 				}
-				else{
-					dp[i][j] = max( dp[i-1][j],dp[i-1][j-cal[i]]+cnt[i] );
-				}
 				
+				// Can input Kal[i], compair input one and do not input one
+				else{
+					dp[i][j] = max(dp[i-1][j-Kal[i]]+V[i],dp[i-1][j]);
+				}
 			}
 		}
 		
-		
-		
-
 		cout << "#" << t << " " << dp[N][L] << endl;
-		
 	}
 	
-
-
+	
+	
+	
+	
+	return 0;
 }

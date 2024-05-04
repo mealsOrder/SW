@@ -1,0 +1,64 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+// 상, 하, 좌, 우 방향을 나타내기 위한 배열
+int dx[] = {-1, 1, 0, 0};
+int dy[] = {0, 0, -1, 1};
+
+// 단지 내 집의 개수를 세기 위한 DFS 함수
+int dfs(int grid[][25], int N, int x, int y) {
+    // 현재 위치의 값을 0으로 바꿔서 중복 방문을 방지
+    grid[x][y] = 0;
+
+    // 현재 위치에서 상, 하, 좌, 우를 확인하면서 단지 내 집의 개수를 센다
+    int count = 1;
+    for (int i = 0; i < 4; ++i) {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+        // 범위를 벗어나지 않고, 집이 있는 경우에만 DFS를 호출
+        if (nx >= 0 && nx < N && ny >= 0 && ny < N && grid[nx][ny] == 1) {
+            count += dfs(grid, N, nx, ny);
+        }
+    }
+    return count;
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    // 지도 정보 입력 받기
+    int grid[25][25];
+    for (int i = 0; i < N; ++i) {
+        string row;
+        cin >> row;
+        for (int j = 0; j < N; ++j) {
+            grid[i][j] = row[j] - '0';
+        }
+    }
+
+    int counts[625]; // 각 단지 내 집의 개수를 저장할 배열
+    int countIndex = 0;
+
+    // 모든 위치에 대해서 DFS를 수행하여 단지를 찾고, 단지 내 집의 개수를 구함
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            if (grid[i][j] == 1) {
+                counts[countIndex++] = dfs(grid, N, i, j);
+            }
+        }
+    }
+
+    // 단지 개수 출력
+    cout << countIndex << endl;
+
+    // 각 단지 내 집의 개수를 오름차순으로 정렬하여 출력
+    sort(counts, counts + countIndex);
+    for (int i = 0; i < countIndex; ++i) {
+        cout << counts[i] << endl;
+    }
+
+    return 0;
+}
