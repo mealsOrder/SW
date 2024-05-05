@@ -1,0 +1,80 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+using namespace std;
+
+const int MAX = 20001; // 최대 노드 수
+
+vector<int> graph[MAX]; // 인접 리스트로 그래프 구현
+int visited[MAX]; // 노드 방문 여부를 저장할 배열
+const int RED = 2;
+const int BLUE = 3;
+
+// DFS 함수 정의
+void DFS(int node, int c) {
+    visited[node] = 1; // 현재 노드를 방문 표시
+
+    // 현재 노드에 색을 칠함
+    int color = (c == RED) ? BLUE : RED;
+
+    // 인접한 노드를 확인하며 DFS를 재귀적으로 호출
+    for (int i = 0; i < graph[node].size(); i++) {
+        int next = graph[node][i];
+        // 방문하지 않은 노드라면 DFS 호출
+        if (!visited[next]) {
+            DFS(next, color); // 다른 색으로 칠함
+        }
+    }
+}
+
+int main() {
+    int K;
+    cin >> K; // 테스트 케이스 수 입력
+    
+    while (K--) {
+        int V, E;
+        cin >> V >> E; // 정점 수와 간선 수 입력
+        
+        // 그래프 초기화
+        for (int i = 1; i <= V; i++) {
+            graph[i].clear();
+            visited[i] = 0;
+        }
+        
+        // 그래프 정보 입력
+        for (int i = 0; i < E; i++) {
+            int a, b;
+            cin >> a >> b;
+            graph[a].push_back(b);
+            graph[b].push_back(a);
+        }
+        
+        // DFS를 이용하여 이분 그래프 판별
+        for (int i = 1; i <= V; i++) {
+            if (!visited[i]) {
+                DFS(i, RED); // 방문하지 않은 노드에 대해 DFS 호출
+            }
+        }
+        
+        // 이분 그래프 여부 출력
+        bool isBipartite = true;
+        for (int i = 1; i <= V; i++) {
+            for (int j = 0; j < graph[i].size(); j++) {
+                int next = graph[i][j];
+                // 인접한 노드끼리 같은 색인지 확인
+                if ((visited[i] == RED && visited[next] == RED) || 
+                    (visited[i] == BLUE && visited[next] == BLUE)) {
+                    isBipartite = false;
+                    break;
+                }
+            }
+            if (!isBipartite) break;
+        }
+        
+        // 결과 출력
+        if (isBipartite) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
+    
+    return 0;
+}
