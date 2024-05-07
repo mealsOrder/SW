@@ -1,0 +1,41 @@
+#include <iostream>
+
+
+// (1) DFS (2)DP 두가지 방법으로 다 풀어보기
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+
+    for (int tc = 1; tc <= T; ++tc) {
+        int N, K;
+        cin >> N >> K;
+
+        int A[20]; // 최대 크기가 20이므로 배열 크기를 20으로 설정
+        for (int i = 0; i < N; ++i)
+            cin >> A[i];
+
+        int dp[21][1001] = {0}; // dp 배열 초기화
+
+        // 초기값 설정
+        for (int i = 0; i <= N; ++i)
+            dp[i][0] = 1;
+
+        // 동적 프로그래밍을 사용하여 부분집합의 합을 계산
+        for (int i = 1; i <= N; ++i) {
+            for (int j = 1; j <= K; ++j) {
+                if (A[i - 1] <= j)
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - A[i - 1]];
+                else
+                    dp[i][j] = dp[i - 1][j];
+            }
+        }
+
+        int result = dp[N][K];
+
+        cout << "#" << tc << " " << result << endl;
+    }
+
+    return 0;
+}
