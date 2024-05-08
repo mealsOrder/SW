@@ -16,12 +16,12 @@ int dx[] = {-1, 1, 0, 0};
 int dy[] = {0, 0, -1, 1};
 
 // DFS 함수 정의
-void dfs(int x, int y, int& cost) {
+void dfs(int x, int y, int cost) {
     // 도착지에 도달한 경우 최소 복구 시간 업데이트
     if (x == N - 1 && y == N - 1) {
         // 최소 복구 시간 갱신
         // 현재 경로의 복구 시간이 더 작은 경우에만 갱신
-        cost = min(cost, map[x][y]);
+        answer = min(answer, cost);
         return;
     }
 
@@ -40,7 +40,7 @@ void dfs(int x, int y, int& cost) {
         if (visited[nx][ny] || map[nx][ny] == 0) continue;
 
         // 다음 위치로 이동하며 복구 시간을 누적
-        dfs(nx, ny, cost);
+        dfs(nx, ny, cost + map[nx][ny]);
     }
 
     // 백트래킹을 위해 방문 표시를 해제
@@ -48,10 +48,6 @@ void dfs(int x, int y, int& cost) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
     int T; // 테스트 케이스의 수
     cin >> T;
 
@@ -68,10 +64,8 @@ int main() {
         // 방문 배열 초기화
         memset(visited, false, sizeof(visited));
 
-        int answer = INF; // 최소 복구 시간을 담을 변수 초기화
-
         // 출발지(0, 0)부터 시작하여 DFS 수행
-        dfs(0, 0, answer);
+        dfs(0, 0, map[0][0]);
 
         // 결과 출력
         cout << "#" << tc << " " << answer << endl;
