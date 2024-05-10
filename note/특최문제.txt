@@ -1,0 +1,73 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+#include <algorithm>
+
+using namespace std;
+
+const int MAX_N = 1001;
+
+int n;
+int dist[3][MAX_N];
+int map[MAX_N][MAX_N];
+
+void dijkstra(int start, int idx) {
+    dist[idx][start] = 0;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({0, start});
+    while (!pq.empty()) {
+        int tmp = pq.top().second;
+        pq.pop();
+        for (int i = 1; i <= n; i++) {
+            if (map[tmp][i] != 0 && dist[idx][i] > dist[idx][tmp] + map[tmp][i]) {
+                dist[idx][i] = dist[idx][tmp] + map[tmp][i];
+                pq.push({dist[idx][i], i});
+            }
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> n;
+    int m;
+    cin >> m;
+
+    fill_n(*dist, 3 * MAX_N, INT_MAX);
+
+    for (int i = 0; i < m; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        if(map[a][b]==0) {
+            map[a][b] = c;
+            map[b][a] = c;
+        } else {
+            map[a][b] = min(map[a][b], c);
+            map[b][a] = min(map[b][a], c);
+        }
+    }
+
+    int a, b;
+    cin >> a >> b;
+
+    dijkstra(1, 0);
+    dijkstra(a, 1);
+    dijkstra(b, 2);
+
+    long long d1 = dist[0][a] + dist[1][b] + dist[2][n];
+    long long d2 = dist[0][b] + dist[2][a] + dist[1][n];
+    long long result = 0;
+    if (d1 >= INT_MAX)
+        result = d2;
+    else if (d2 >= INT_MAX)
+        result = d1;
+    else
+        result = min(d1, d2);
+
+    cout << result << endl;
+
+    return 0;
+}
