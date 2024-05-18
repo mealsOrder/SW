@@ -8,7 +8,7 @@ int M, N;
 int map[1001][1001];
 int dx[4] = {0, 0, 1, -1};
 int dy[4] = {1, -1, 0, 0};
-int days = 0;
+int ans = 0;
 
 queue<pair<int, int>> q;
 
@@ -50,11 +50,11 @@ int main() {
                 cout << -1 << '\n';
                 return 0;
             }
-            days = max(days, map[i][j]);
+            ans = max(ans, map[i][j]);
         }
     }
 
-    cout << days - 1 << '\n';
+    cout << ans - 1 << '\n';
 
     return 0;
 }
