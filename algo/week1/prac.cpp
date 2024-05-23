@@ -20,12 +20,17 @@ void DFS(int y, int x, int cnt, int dir) {
 
     int ny = y + dy[dir];
     int nx = x + dx[dir];
-    if(ny < 0 || ny >= R || nx < 0 || nx >= C || visited[ny][nx]){
+
+    if (ny >= 0 && ny < R && nx >= 0 && nx < C && !visited[ny][nx]) {
+        DFS(ny, nx, cnt + 1, dir);
+    } else {
         dir = (dir + 1) % 4;
         ny = y + dy[dir];
         nx = x + dx[dir];
+        if (ny >= 0 && ny < R && nx >= 0 && nx < C && !visited[ny][nx]) {
+            DFS(ny, nx, cnt + 1, dir);
+        }
     }
-    DFS(ny, nx, cnt + 1, dir);
 }
 
 int main() {
