@@ -35,3 +35,24 @@ console.log(yujin.name);
 
 console.log(jiMin.sing());
 console.log(jiMin.year);
+console.log('-------------------');
+const cf = new IdolModel('코드팩토리',1992);
+console.log(cf);
+
+console.log(cf.name);
+console.log('-------------------');
+
+console.log(yujin instanceof IdolModel);
+console.log(yujin instanceof FemaleIdolModel);
+console.log(yujin instanceof MaleIdolModel);
+console.log('-------------------');
+
+console.log(jiMin instanceof IdolModel);
+console.log(jiMin instanceof FemaleIdolModel);
+console.log(jiMin instanceof MaleIdolModel);
+console.log('-------------------');
+
+console.log(cf instanceof IdolModel);
+console.log(cf instanceof FemaleIdolModel);
+console.log(cf instanceof MaleIdolModel);
+console.log('-------------------');
