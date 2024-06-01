@@ -2,7 +2,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-const int MX = 1000001 ;
+const int MX = 1000001;
 long long arr[MX];
 vector<pair<int,int>>v;
 int main(){
