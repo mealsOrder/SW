@@ -5,8 +5,8 @@
 using namespace std;
 
 const int MAX = 1001;  // 입력 배열의 최대 크기 상수 정의
-int A[MAX];           // 입력 받은 숫자들을 저장할 배열
-int DP[MAX];         // 동적 프로그래밍을 위한 배열
+int A[MAX];            // 입력 받은 숫자들을 저장할 배열
+int DP[MAX];           // 동적 프로그래밍을 위한 배열
 
 int main(){
     int N;  // 입력 받을 숫자의 개수
