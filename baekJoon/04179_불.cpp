@@ -73,7 +73,24 @@ int main(){
                 return 0;
             }
             if(dist2[nx][ny]>=0 || board[nx][ny] == '#')continue;
+
+            /**
+             * 첫 번째 조건 dist1[nx][ny]!=-1은 불이 해당 위치에 도달했는지를 확인합니다. 
+             * -1은 불이 아직 도달하지 않은 위치를 나타냅니다. 
+             * 따라서 dist1[nx][ny]!=-1은 불이 해당 위치에 도달했음을 의미합니다.
+             * 두 번째 조건 dist1[nx][ny] <= dist2[curX][curY]+1은 
+             * 불이 도달하는 시간이 지훈이가 도달하는 시간보다 빠른지를 확인합니다. 
+             * dist1[nx][ny]는 불이 해당 위치에 도달하는 시간을, 
+             * dist2[curX][curY]+1은 지훈이가 해당 위치에 도달하는 시간을 나타냅니다. 
+             * 따라서 dist1[nx][ny] <= dist2[curX][curY]+1은 불이 지훈이보다 먼저 해당 위치에 도달함을 의미합니다.
+             * +++
+             * dist1[nx][ny] <= dist2[curX][curY]+1 대신
+             * dist1[nx][ny] <= dist2[nx][ny] 조건을 사용하면 될것 같고 맞을것 같지만
+             * 지훈이가 이미 그 위치에 도달한 시간을 고려하게 됩니다. 
+             * 이는 지훈이가 다음 위치로 이동하려고 할 때의 시간과는 다를 수 있습니다
+            */
             if(dist1[nx][ny]!=-1 && dist1[nx][ny] <= dist2[curX][curY]+1)continue;
+
             dist2[nx][ny] = dist2[curX][curY]+1;
             q2.push({nx,ny});
         }
