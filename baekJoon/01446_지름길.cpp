@@ -13,7 +13,7 @@ using namespace std;
 const int MX = 10001;
 const int INF = INT_MAX;
 int N,D;
-vector<vector<pair<int,int>>> v(MX);
+vector<vector<pair<int,int>>> v(MX); // v[MX]: 벡터의 배열, v(MX): 벡터의 벡터
 vector<int> cost(MX,INF);
 
 void dijkstra(int start, vector<vector<pair<int,int>>> v){
