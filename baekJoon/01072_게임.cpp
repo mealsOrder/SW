@@ -5,32 +5,30 @@
 #include<climits>
 #include<cmath>
 using namespace std;
-
+const int MX = 1000000000;
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    long long int X,Y;
+    long long X,Y,Z;
     cin >> X >> Y;
-    long long int Z = (floor((double)Y/X * 100));
-    long long int ans = LONG_LONG_MAX;
-    long long int lef=1,rig = X;
+    Z = (Y*100/X);
     if( Z>= 99 ){
         cout << "-1\n";
         return 0;
     }
-    
+    int lef = 0,rig = MX;
+
     while(lef<=rig){
-        long long int mid = (lef+rig)/2;
-        long long int chg = (floor((double)(Y+mid)/(X+mid) * 100));
+        int mid = (lef+rig)/2;
+        int chg = (Y+mid)*100 / (X+mid);
 
         if( chg > Z){
             rig = mid-1;
-            ans = min(ans,mid);
         }
         else{
             lef = mid+1;
         }
     }
-    cout << ans << '\n';
+    cout << lef << '\n';
     return 0;
 }
