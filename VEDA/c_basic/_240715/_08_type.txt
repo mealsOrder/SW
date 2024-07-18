@@ -1,0 +1,19 @@
+Title: To type
+==============================================================
+	int8_t // signed char
+	uint8_t // unsigned char;
+__	  __
+\ \__/ /
+ \____/ << ALU
+새 모양 머시기 : ALU
+
+#include<stdio.h>
+
+int main(){
+	unsigned int a;
+	a = 0xFFFFFFFF // 4294967295;
+	printf("%d",a);
+	a = -1; 예제 3-4 참고
+}
+	
+	

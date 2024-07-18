@@ -1,0 +1,33 @@
+Title: To array and Pointer
+==============================================================
+		int a[] = {...}
+		
+		int [] a;
+		
+		int *p;
+		
+		// 2차원
+		int aa[2][3];
+		int[3] aa[2];
+		int[3] [] aa;
+		int[3] *pp;
+		
+		int (*pp)[3];
+		
+		// 3차원
+		int aaa[2][3][4];
+		int[3][4] aa[2];
+		int (*ppp)[3][4];
+		
+		
+		그럼 **p 도 2차원인데 접근할 수 있는거 아닌가?
+		-> 못한다 찾아 가질 못한다
+		void func1(int **pp) 	// 차원 만 맞추는게 아니다! 
+		void func2(int (*pp)[3] // 이렇게 맞춰줘야함 
+		
+		
+		void func(int p){
+			int i,j;
+			for(i=0;i<12;i++)printf("%d ", ((int*)p)[i] );
+			// p[i] == *(p+i)
+		}

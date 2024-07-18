@@ -1,0 +1,15 @@
+Title: To variable scope
+==============================================================
+
+1. 전역 ( global variable )
+	
+	out side of { }
+	
+2. 지역 ( local variable )
+	inside of { }
+	
+	
+3. 함수 ( function variable )
+
+
+

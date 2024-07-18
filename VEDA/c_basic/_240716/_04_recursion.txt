@@ -1,0 +1,18 @@
+Title: To recursive Function
+==============================================================
+
+
+0. call itself
+
+1. pros
+	기가막힌 알고리즘
+	
+2. cons
+	위험함. (ex. stack overflow )
+
+
+대표적인 재귀함수 예제) 팩토리얼, 피보나치, 백트레킹
+function(){
+	
+}
+

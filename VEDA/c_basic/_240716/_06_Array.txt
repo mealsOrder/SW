@@ -1,0 +1,16 @@
+Title: To Array
+==============================================================
+
+정의: memory, 동일한 type, 연속적
+int gi =1 	// .DATA section
+int gni;	// .BSS section
+{
+	int a[5]; // 쓰레기 값
+	int b[3] = { 10,1,2 };
+	int c[5] = { 1,2,3 }; // 뒤에 빈값은 0
+	
+	int aa[3][4];
+	
+	int aaa[2][3][4];
+}
+

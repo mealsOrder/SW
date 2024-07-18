@@ -1,0 +1,45 @@
+Title: To Static Variable
+==============================================================
+
+레지스터는 전역으로 사용할 수 없다
+register int k = 0;
+
+c 파일이 두개 이상 연결 될 경우 그냥 전역 변수로 선언하면
+모든 c파일에서 전역변수를 접근할 수 있음
+하지만 특정 c파일에서만 해당 변수를 접근 할 수 있는 전역변수로 선언하려면
+static 키워드를 붙여서 사용하면 된다!
+
+ex. 
+	status = false;
+	디바이스1.c , 디바이스2.c
+	ON/OFF
+		status = true / status = false;
+		
+	위 경우에서는 디바이스1,2 의 상태를 공유하므로 전원은 끄면 같이 꺼지거나 같이 켜짐
+	그래서 아래 처럼 이렇게
+	
+	static status = false;
+	선언해서 해당 파일에서만 접근할 수 있게 한다.
+	
+	
+	변수가 살아 있따. (alive) : 변수 주소 값 유지
+	
+	attribute : 
+		1. scope    : variable Linkage
+				- 안에서 밖에는 보이는데
+				- 밖에서 안은 보이지 않는다...
+		2. lifetime : 변수의 주소 값 유지 기간
+		
+void func(){
+	int i = 1; 		  // .Stack
+	{
+		static int li =0; // .DATA 에 잡힘, 지역변수 -> 지역변수는 stack에 잡힌다 는 모순이였다
+		static int lni;	  // .BSS 에 잡힘, 지역변수  
+	}
+	printf("%d",li); // 이 상태에서 li가 static으로 선언되어서 전역변수로 동작 할것 같지만
+					 // scope 의 특성으로 li는 지역 변수여서 해당 코드가 작동하지 않는다.
+	li++
+}
+
+		
+			 

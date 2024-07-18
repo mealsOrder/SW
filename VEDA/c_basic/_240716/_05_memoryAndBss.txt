@@ -1,0 +1,42 @@
+Title: To Memory
+==============================================================
+
+1. Non volatile memory ( 비휘발성 ) 
+	- 값유지... 끄 -> 켜 (값 남아있음)
+	- ROM ( program code <- download ) read only
+			------------
+			.Text ( .Rdata = .const)
+			.Data
+			.BSS
+2. volatile memory ( 휘발성 )
+	- 날라감... 끄 -> 켜 (값 사라짐)
+	- RAM  read,, write
+================================================================
+
+
+Title: To BSS ?
+================================================================
+ROM		|  	ROM에 저장된 값을 복사해서 RAM으로 넘긴다
+		|  	.DATA 영역
+=========
+RAM		|	ROM에서 초기화 되지 않은 변수는 
+		|	RAM으로 가져오면서 0으로 초기화 한다! 
+		|	.BSS 영역
+=========
+
+위 것을 CRT가 해준다.
+CRT가 해주는 역할 : 초기화 되지 않은 전역변수 zero init, 스택 포인터 잡아주는 역할
+
+
+int gi=1; // .DATA section // copied to RAM by CRT
+int gni;  // .BSS section  // Zero-copy init by CRT
+
+int gx = 0 //.BSS 에 저장된다! .DATA 에 저장될 것 같은데 아니다!
+int main(){
+	
+	int i = 1; // stack section
+	int j;     // trash value
+	
+	
+	return 0;
+}

@@ -1,0 +1,34 @@
+Title: To c Program buuilding seq.
+==============================================================
+hello.c
+
+hello.c	: c-source // ASCII
+	(# ~~ : 전 처리기)
+	#include
+	#define
+	
+	(pre - processing by preprocessor)
+	gcc -E
+	
+hello.i	: intermediate file // ASCII
+	(compile)
+	gcc -S
+	
+hello.s	: assembly file // ASCII
+	(assemble)
+	gcc -c
+	
+hello.o	: object file // ELF ( COFF/PE 포멧으로 )
+	.TEXT
+	.DATA
+	.BSS
+	.RDATA
+	...
+	( location / link )
+	gcc hello.o -o hello.exe
+	
+hello.exe	: executeable file // ELF
+	CRT, libc 가 들러 붙어서 사이즈가 커진다!
+	
+
+hello.bin   : binary file // plat data format

@@ -1,0 +1,25 @@
+Title: To global vs local
+==============================================================
+
+// global : 전역 변수
+char gFruit[10] = "apple";
+
+// local : 지역 변수
+{
+	char fruit[6] = "apple";
+	
+	// 전역 변수에 있는 apple을 banana로 바꿈
+	gFruit[0] = 'b';
+	gFruit[0] = 'a';
+	gFruit[0] = 'n';
+	 .
+	 .
+	 .
+	 fruit = "banana" // 불가능! 이유 fruit는 변수가 아니므로...
+	 
+	 // 그래서 이렇게 사용해서 fruit에 문자열 banana 를 복사해서 덮어쓴다
+	 strcpy(fruit, "banana");
+}
+
+
+	

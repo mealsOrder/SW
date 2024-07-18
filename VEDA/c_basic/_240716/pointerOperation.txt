@@ -1,0 +1,47 @@
+Title: To pointer operator  
+==============================================================
+
+	* : indirect reference operator.
+		aka, de-reference operator.
+		
+		
+		
+	* vs [] (우선순위가 얘가 더 높아서) 일진, 이진 외우기 연산자 우선순위...
+{
+	@head
+		identifier's 정체성의 정의 -> [포인터/배열]
+	int *p;  	// p 1차원 포인터 변수
+	int a[3]; 	// a 1차원 배열 상수
+	
+ 	a[0] == *a; // 기본 원리
+	
+	int **xxxx[2][3]; // xxxx 
+	
+	xxxx     : 4차원 : 배열
+	*xxxx 	 : 3차원 : 배열
+	**xxxx 	 : 2차원 : 포인터 (변수)
+	***xxxx  : 1차원 : 포인터 (변수)
+	****xxxx : 0차원 : 포인터 (변수)
+	
+	
+	xxxx     : 4차원
+	*xxxx 	 = 0 // 
+	**xxxx 	 : 2차원
+	***xxxx  : 1차원
+	****xxxx = 0 // 가능
+	
+	xxxx[0] == *xxxx
+	xxxx[0][0] == **xxxx
+	xxxx[0][0][0] == ***xxxx
+	xxxx[0][0][0][0] == ****xxxx
+	---------------------------
+	@body
+		
+		*p;   // indirect reference operator. "간접참조연산자"
+		p = 123; // 가능
+		
+		a[2]; // indexing operation "배열참조연산자"
+		a = 123; // 불가능 
+
+}
+	

@@ -1,0 +1,41 @@
+Title: To string, char pointer
+==============================================================
+
+'A' = 65; // 소문자 대문자 차이 32,
+'a' = 97;
+
+(1<<5) 32. // 5비트 차이
+
+char * str = "hello";
+
+"hello"[2] == *( "hello" +   2 )
+				=  char*  + (char*)2
+				= 1000   +   2
+				= 1002 -> (char*)
+				앞에 있는 * 가 차원을 깍아서
+				최종적으로 0차원 char
+				
+
+int a[] = {10,1,2,3,4};
+
+printf("%d",1[a]);
+
+a(N) == *(a+N) == *(N+a) == N[a];
+
+void func(const char *str){
+	str[4] = '\0';
+}
+
+int main(){
+	
+	char myString[] = "hello";
+	func(myString); // 잘 돌아가는
+	func("hello");	// const 를 붙이지 않으면 이게 맞는건지 틀린건지 모른다(일단은 틀림)
+					// 이유 Rdata 값을 변경하려고 들었기 때문
+					// 그럼 컴파일러가 경고 창을 띄어주면 좋지 않을까?
+					// 해서  함수의 매개 변수를 const char *str 이렇게 선언해주면
+					// Rdata 값을 변경-
+	printf("%s", myString);
+
+	return 0;
+}

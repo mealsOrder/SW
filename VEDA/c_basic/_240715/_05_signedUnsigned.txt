@@ -1,0 +1,25 @@
+Title: To Memory bits
+==============================================================
+	  signed char sc = 0x12; // -128 ~ 127
+	unsigned char uc = 0x12; // 0 ~ 255
+	
+	signed S: sign bit(MSb)
+	0b S000 0000;
+	
+	unsigned
+	0b 0001 0010;
+	
+	sc = 1;
+	0b 0000 0001;
+	
+	sc = -1;
+	0b 1000 0001; // 이렇게 하면 틀린다, 2의 보수로 만들어 줘야함
+	
+	0b 0000 0001;
+	0b 1111 1110; // 1의 1의 보수 (비트를 0은 1로 1은 0으로 바꿔준다)
+	0b 1111 1111; // 1의 2의 보수 (1의 보수에 1더해준값) 이게 -1 이다.
+	
+	0b XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+	
+	음수 :
+		int i = 1; // signed int

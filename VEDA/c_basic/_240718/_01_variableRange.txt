@@ -1,0 +1,22 @@
+Title: To Variable
+==============================================================
+
+	variable : storage ( L-value )
+	
+	
+int func(){
+	int li =1;
+	int lni;
+	
+	{
+		int li = 2;
+		int lni;
+		
+		printf("%d",li); // 2
+	}
+	
+	printf("%d",li); // 1
+	
+}
+		
+			 

@@ -1,0 +1,12 @@
+Title: stdio
+==============================================================
+	참고로 알아라
+		   FDT		PC				embedded
+	stdin	0	-> keyboard			UART (serial)	by scanf
+	stdout	1	-> monitor			UART (serial)	by printf
+	stderr	2	-> monitor			UART (serial)	by perror
+			-
+			장치하고 연결되어 있다~
+			파일 장에서 다시 설명하신다고 하심
+			
+			 

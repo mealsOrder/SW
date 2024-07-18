@@ -1,0 +1,28 @@
+Title: To Variable 
+==============================================================
+변수
+1. 선언
+	type identifier ;
+	
+	ex)
+	{
+		int i; // stack sizeof(int)
+	}
+	
+	identifier = { a-z, A-Z, 0-9, '__' }
+	예외) 숫자가 맨 앞에 오면 안된다!
+2. 정의
+	type identifier = init value;
+	
+	ex)
+	{
+		int i =123;
+	}
+	
+	
+함수
+1. 함수의 선언
+	void func1(void);
+	
+2. 함수의 정의
+	void func1(void){ ... };

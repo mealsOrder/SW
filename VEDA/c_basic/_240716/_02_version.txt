@@ -1,0 +1,21 @@
+Title: To version
+==============================================================
+
+ANSI -C ( america stand )
+	C-version
+	C90(89) (original)
+	C99
+	C11
+	C14
+	C17
+전통적인 C에서는
+선언부와 몸통부를 잘 지켜서 코딩했어야 했다!
+func(){
+@head - DATA
+	int i;
+	int j=123;
+-----------------
+@body - algorithm
+	i++;
+	j = i-3;
+}

@@ -1,0 +1,33 @@
+Title: To function pointer
+==============================================================
+
+int a[];
+int[] a;
+int *p;
+p = a;
+
+p = f;
+p();
+
+type id;
+void func(void);
+>> void(void) func;
+
+int func2(int,float);
+>> int(int,float)func2;
+
+int(int,float) * pf;
+>> int *pf(int,float); // pf = func2; 	//x 지금은 int* 를 반환하는 "함수"
+>> int (*pf)(int,float); // pf = func2; //o 지금은 함수 "포인터"!
+
+( int(*)(int,float) ) pf 
+ ------------------- 밑줄 친 부분이 pf의 타입
+ 
+함수에서는 아래처럼 구분하지 않는다 그냥 너도 쓰지마!
+pf = func; // o
+pf = &func;// o
+
+int a[] = {...};
+	a, &a;
+int f() = {...};
+	f,&f;
