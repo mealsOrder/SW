@@ -29,25 +29,26 @@ int main(){
     pq.push({dist[S],S});
 
     while(!pq.empty()){
-        int curDist = pq.top().first;  // 현재 노드까지의 최단 거리
+        int curCost = pq.top().first;  // 현재 노드까지의 최단 거리
         int curNode = pq.top().second; // 현재 노드
         pq.pop(); // 현재 노드 꺼내기
 
         // 현재 노드의 최단 거리가 이미 갱신된 경우 무시
-        if(dist[curNode] != curDist)continue;
+        // 현재 노드의 최단 거리가 현재 비용과 다르면 무시
+        if(dist[curNode] != curCost)continue;
 
         // 현재 노드에서 인접한 노드로 이동
         for(int i=0;i<adj[curNode].size();i++){
-            int nxDist = adj[curNode][i].first; // 다음 노드까지의 거리
+            int nxCost = adj[curNode][i].first; // 다음 노드까지의 비용
             int nxNode = adj[curNode][i].second;// 다음 노드
 
-            nxDist += curDist; // 현재 노드까지의 최단 거리 + 다음노드 까지의 거리
+            nxCost += curCost; // 현재 노드까지의 최단 비용 + 다음노드 까지의 비용
             
             // 다음 노드 까지의 최단 거리가 이미 갱신된 경우 무시
-            if(dist[nxNode] <= nxDist) continue;
+            if(dist[nxNode] <= nxCost) continue;
             
             // 다음 노드까지의 최단 거리 갱신
-            dist[nxNode] = nxDist;
+            dist[nxNode] = nxCost;
             pq.push({dist[nxNode],nxNode}); // 다음 노드까지의 최단 거리와, 다음 노드를 큐에 삽입
 
         }
