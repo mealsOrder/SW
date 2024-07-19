@@ -6,7 +6,6 @@ using namespace std;
 const int MX = 100001;
 int dist[MX];
 bool visited[MX];
-int arr[MX];
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
