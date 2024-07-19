@@ -1,0 +1,35 @@
+Title: To data type in c
+==============================================================
+		
+1. simple data type	
+	char, int, float, double ..
+	
+2. aggregation type
+	array a[] ,b[]
+	struct s1, s2
+	
+	func(a); // 배열을 넘길때 배열의 주소로 넘어감
+	배열은 a = b 이렇게 하면 안된다! for 문을 돌려서 인덱스 값들을 맞춰야함
+	
+	func(s); // s를 넘길때 값 자체를 복사해서 넘기므로 아주 무겁다
+	구조체는 s1 = s2 이렇게 사용 가능
+	
+
+Title: To padding
+==============================================================
+
+attribute "packed" : padding 쓰지말고 꽉꽉 담아라 하는 키워드
+{
+	word size 4 라고 할때
+	
+	char 1 pad 3 : 빈 공간 pad 3 바이트를 넣어줌(메모리를 사용)
+	int 4
+	char 1
+
+}
+
+why padding ?
+	pros> speed : faster fetch
+	cons> memory : (pad 3) 
+	
+	

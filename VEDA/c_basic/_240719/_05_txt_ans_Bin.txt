@@ -1,0 +1,30 @@
+Title: To txt vs bin
+==============================================================
+
+FTP: 컴퓨터 네트워크에서 클라이언트와 서버 간에 
+     파일을 전송하는 데 사용되는 표준 네트워크 프로토콜
+	 
+	unix
+		ascii code
+		10	= \n : 라인 피드
+		13	= \r : 캐리지 리턴
+		
+		binary
+		
+	windows
+		
+		textmode
+		
+		printf("hello \n");
+	
+	
+	"wb" // binary 다룸
+		fwrite( struct(data)// 사람이 읽을 수 없는 것도 쓸수 있음 
+	
+	"wt" "w"
+		text file (ascii) <--> txt
+		fprintf()
+		fscanf()
+		
+		
+	

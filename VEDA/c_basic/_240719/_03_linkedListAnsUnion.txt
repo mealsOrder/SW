@@ -1,0 +1,31 @@
+Title: To linked list
+==============================================================
+	자료구조
+	
+	-리스트
+		1. 배열 or 리스트 로 구현
+		2. 링크드 리스트 로 구현
+		
+		
+Title: To union
+==============================================================
+언제 nuion 을 사용하는가? 
+ex) 예제
+struct bits_tag{
+	unsigned int a:4;
+	unsigned int b:8;
+	unsigned int c:8;
+	unsigned int d:8;
+	unsigned int e:4;
+};
+
+union register_tag{
+	struct bits_tag B;
+	unsigned int U;
+};
+	
+int main(){
+	union register_tag myRegister;
+	myRegister.U = 0x12345678;
+	printf("%d\n", myRegister.B.c);
+}		

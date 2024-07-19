@@ -1,0 +1,16 @@
+Title: To malloc
+==============================================================
+	#include<stdlib.h> 필요함 malloc 사용하려면~
+	
+	동적 할당한 메모리는 heap 영역에 잡힌다
+	malloc 과 free 는 짝을 이뤄야함
+	free 를 안해주면 leak이 일어나서 나중에 메모리가 부족해 질 수도 있다.
+	
+	int *pi = (int *)malloc (sizeof(int));
+	
+	pi는 malloc을 실패하면 NULL을 리턴한다! ( 메모리가 부족하다라는 뜻)
+	
+	//memset(배열 주소, 초기화 하려는 값, 크기) 
+	memset(pi,0,N*sizeof(int)) 함수로 동적할당 받은 배열을 초기화 하고 사용 하면 좋다~
+	
+	

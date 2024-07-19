@@ -1,0 +1,15 @@
+Title: To file
+==============================================================
+
+1. 고수준 파일 입출력
+	FILE *fp;
+	fp = fopen("...","rw");
+	
+2. 저수준 파일 입출력
+	int fd = open("...",o_flag,permission);
+	
+	read/write/close ...
+	
+	file operations on os ( ie, linux )
+	
+	

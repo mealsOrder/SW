@@ -1,0 +1,26 @@
+Title: To typedef
+==============================================================
+
+	int8_t;
+	
+	asdfasdfi_t		i;
+	
+	age_t	a;
+	
+	typedef int age_t; // int 를 age_t 로 사용하겠따~ 라는 뜻
+	
+	
+	struct student yuni; // 이렇게 쓰면 너무 길어서 귀찮다
+	
+	1.
+	typedef student student_t; // typedef 를 선언해주고
+	student_t yuni; // 이렇게 사용 하면 됨~ // 짧아져서 좋음
+	
+	2.
+	typedef struct (student) { // ( ) 친 부분은 생략해도 된다~
+		int age;
+		int major;
+	}	struct_t;
+	student_t yuni;
+	
+c에서는 대문자를 잘 안쓴다..
