@@ -7,7 +7,7 @@ int main(){
     cin.tie(0);
     int a;
     cin >> a;
-
-    cout << &a << " " << a;
+    int *p = &a;
+    cout << *p/10 << "..." << *p%10;
     return 0;
 }
