@@ -43,19 +43,26 @@ void Person::changeName(const char *name)
     if(strlen(name) > strlen(this->name))return;
     strcpy(this->name,name);
 }
+
+void f(Person person)           // 2. '값에 의한 호출'로 객체가 전달될 때
+{                               // person 객체의 복사 생성자 호출
+    person.changeName("dummy");
+}
+
+Person g()
+{
+    Person mother(2,"Jane");
+    return mother;          // 3. 함수에서 객체를 리턴할 때, mother 객체의
+                            // 복사본 생성. 본사본의 복사 생성자 호출
+}
 int main()
 {
     Person father(1,"Kitae");
-    Person daughter(father); // 컴파일러가 디폴트 복사 생성자 호출
-    cout << "daughter 객체 생성 직후 ----\n";
-    father.show();
-    daughter.show();
+    Person son = father; // 복사 생성자 호출
+                         // 1. 객체로 초기화하여 객체가 생성될 때, 
+                         // son 객체의 복사 생성자 호출
+    f(father);  // 복사 생성자 호출
+    g();        // 복사 생성자 호출
 
-    daughter.changeName("Grace");
-    cout << "daughter 이름을 Grace로 변경 한 후 ----\n";
-    father.show();
-    daughter.show();
-    // daughter, father 순으로 소멸.
-    // 정상 종료!
     return 0;
 }
