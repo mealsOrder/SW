@@ -4,12 +4,12 @@
 #include<cmath>
 #include<random>
 using namespace std;
-const int MX = 100;
+const int MX = 300;
 vector<int>v;
 
 // wx + bias;
 double linear_func(double x_data,double weights, double bias){
-    return x_data*weights*bias;
+    return x_data*weights+bias;
 }
 
 // random linear - 
@@ -66,10 +66,26 @@ int main(){
     cin.tie(0);
 
     // y = x + 1, w = 1, b = 1
-    // 2000 번 
-    vector<int>x_data = {1,2,3,4,5};
-    vector<int>y_data = {2,3,4,5,6};
+    // opencv 이용해서 이미지를 가지고 뭘 해보고 싶었지만
+    // 무지이슈.. 시간이슈로... 
+    // 영상 몇개 좀더 찾아보고 하기로 하고 일단 pass 
+    
+    // 어떤 빵 가게에 하루당 소보루빵 제품의 판매량 데이터의 관계를 나타내 보고자 한다.
 
+    // 날짜, 시간, 일차
+    vector<int>x_data;
+    for(int i=0;i<30;i++){
+        x_data.push_back(i+1);
+    }
+
+    // 판매량 (빵 갯수)
+    vector<int>y_data={25,20,21,18,21,15,19,24,20,16,18,22,13,19,24,13,18,29,24,17,12,11,23,5,27,14,15,31,21,9};
+
+    // 출력 당시 
+    //updated Weight : 8.54781 ??? 
+    //updated bias   : 9.11015 ???
+
+    // 위에 숫자들은 뭘 의미하는 거지?
     
     double weights = ((double)rand()/ RAND_MAX);
     double bias = ((double)rand()/ RAND_MAX);
