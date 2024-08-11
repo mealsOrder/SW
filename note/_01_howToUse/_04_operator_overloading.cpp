@@ -5,7 +5,7 @@
 #include<cmath>
 using namespace std;
 
-struct minAbs{
+typedef struct minAbs{
     // 사용자 정의 비교 함수 객체
     // STL 컨테이너 원소를 절댓값이 작은 순서로 정렬하기 
     // 위해 operator() 함수를 오버로딩
@@ -16,7 +16,7 @@ struct minAbs{
         return abs(a)>abs(b);
     }
 
-};
+}minAbs;
 
 int main(){
     ios_base::sync_with_stdio(0);

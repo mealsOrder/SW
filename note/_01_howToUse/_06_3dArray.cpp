@@ -6,9 +6,8 @@
 const int MX = 101;
 /**
  * 3차워원 배열 루프 순서
- * 가로 세로 높이
- *  M    N    H
- * int arr[N][M][H]
+ * int arr[H][N][M]
+ *    arr[높이(깊이)][가로][세로]
  * for(int k=0;k<H;k++)
  *      for(int i=0;i<N;i++)
  *          for(int j=0;j<M;j++)
