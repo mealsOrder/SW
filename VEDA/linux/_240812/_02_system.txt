@@ -1,0 +1,24 @@
+Title: To 유닉스/리눅스
+==============================================================
+
+	1. c
+	
+	2. c -- > device programming (F/W): 펌웨어
+		- ARM : STM32F103 (M3/M4)
+	3. linux env. (PC)
+		-> 개발환경
+			commands
+			
+		-> 실행 환경 ( embedded linux ) : Android.
+			process / thread
+	
+	4. kernel porting ( YOCTO ) rasberry PI.
+	
+	5. device driver
+	
+	6. system programming
+		" system call " : system => 커널을 말함
+		- applications ( process / thread )
+		- network
+		
+		

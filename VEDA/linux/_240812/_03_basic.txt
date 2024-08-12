@@ -1,0 +1,28 @@
+Title: To access voa SSH
+==============================================================
+
+from dos command :
+	c:> ping 192.168.56.101
+	
+	c:> ssh iam@192.168.56.101
+	
+	1. ? SSH <yes>
+	2. pw ? aboy
+
+
+Title: To system "admin" istration.
+==============================================================
+
+admin :
+	- by super user ( root )
+	계정 추가 / 삭제 / 변경
+	1. useradd
+	2. userdel
+	
+
+
+Title: To qt
+==============================================================
+
+	
+		
