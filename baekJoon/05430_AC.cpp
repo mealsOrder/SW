@@ -1,37 +1,76 @@
-#include<iostream>
-#include<algorithm>
-#include<vector>
+#include <iostream>
+#include <deque>
 using namespace std;
+
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int t, n;
+    cin >> t;
 
-    int T;
-    cin >>T;
-    while(T--){
-        string ops,_list;
-        cin >> ops;
-        int num;
-        cin >> num;
-        cin>>_list;
+    while(t--){
+        deque<int> dq;
+        string p, str, emptyString = "";
+        cin >> p >> n >> str;
 
-        for(char op:ops){
-            if(op == 'R'){
-                _list.reserve();
-            }
+        bool reverse = false, error = false;
+
+        for(int i = 0; i < str.length(); i++){
+            if(isdigit(str[i])) emptyString += str[i];
             else{
-                if(_list.empty()){
-                    cout << "error\n";
-                    break;
-                }
-                else{
-                    _list.erase(0);
+                if(!emptyString.empty()){
+                    dq.push_back(stoi(emptyString));
+                    emptyString = "";
                 }
             }
         }
-        cout << _list << '\n';
-    }
 
+        for(auto o : p){
+            if(o == 'R'){
+                if(reverse)
+                    reverse = false;
+                else
+                    reverse = true;
+            }
+            else{
+                if(dq.empty()){
+                    cout << "error\n";
+                    error = true;
+                    break;
+                }
+                if(reverse)
+                    dq.pop_back();
+                else
+                    dq.pop_front();
+            }
+        }
+
+        if(!error)
+            cout << '[';
+
+        if(reverse && !dq.empty()){
+            for(auto o = dq.rbegin(); o != dq.rend(); o++){
+                if(o == dq.rend() - 1)
+                    cout << *o;
+                else
+                    cout << *o << ',';
+            }
+        }
+
+        else if(!reverse && !dq.empty()){
+            for(auto o = dq.begin(); o != dq.end(); o++){
+                if(o == dq.end() - 1)
+                    cout << *o;
+                else
+                    cout << *o << ',';
+            }
+        }
+
+        if(!error)
+            cout << "]\n";
+    }
 
     return 0;
 }
