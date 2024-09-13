@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/hub/SW/VEDA/linux/gu/server/build",
+  "command": "C:\\mingw64\\bin\\gcc.exe   -g -std=gnu11 -o CMakeFiles\\chat_server.dir\\connect.c.obj -c D:\\hub\\SW\\VEDA\\linux\\gu\\server\\connect.c",
+  "file": "D:/hub/SW/VEDA/linux/gu/server/connect.c"
+},
+{
+  "directory": "D:/hub/SW/VEDA/linux/gu/server/build",
+  "command": "C:\\mingw64\\bin\\gcc.exe   -g -std=gnu11 -o CMakeFiles\\chat_server.dir\\server.c.obj -c D:\\hub\\SW\\VEDA\\linux\\gu\\server\\server.c",
+  "file": "D:/hub/SW/VEDA/linux/gu/server/server.c"
+},
+{
+  "directory": "D:/hub/SW/VEDA/linux/gu/server/build",
+  "command": "C:\\mingw64\\bin\\gcc.exe   -g -std=gnu11 -o CMakeFiles\\chat_server.dir\\user.c.obj -c D:\\hub\\SW\\VEDA\\linux\\gu\\server\\user.c",
+  "file": "D:/hub/SW/VEDA/linux/gu/server/user.c"
+}
+]

@@ -1,0 +1,3 @@
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E rm -f CMakeFiles\chat_server.dir/objects.a
+C:\mingw64\bin\ar.exe cr CMakeFiles\chat_server.dir/objects.a @CMakeFiles\chat_server.dir\objects1.rsp
+C:\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\chat_server.dir/objects.a -Wl,--no-whole-archive -o chat_server.exe -Wl,--out-implib,libchat_server.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\chat_server.dir\linklibs.rsp

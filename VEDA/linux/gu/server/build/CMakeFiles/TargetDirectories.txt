@@ -1,0 +1,3 @@
+D:/hub/SW/VEDA/linux/gu/server/build/CMakeFiles/chat_server.dir
+D:/hub/SW/VEDA/linux/gu/server/build/CMakeFiles/edit_cache.dir
+D:/hub/SW/VEDA/linux/gu/server/build/CMakeFiles/rebuild_cache.dir
