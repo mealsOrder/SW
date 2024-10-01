@@ -15,6 +15,6 @@ VEDA 사람들 마다 고유의 번호가 있는데
 - 칠판을 기준으로 자리 배치
 
 # 결과 화면
-![결과화면](링크)
+![결과화면](https://github.com/mealsOrder/SW/blob/main/project/randomSeat/randomSeatResult.png)
 
 
