@@ -1,67 +1,56 @@
 #include<iostream>
-#include<algorithm>
 #include<vector>
-#include<queue>
+#include<algorithm>
+#include<cmath>
 using namespace std;
-const int MX = 100001;
-const int INF = 987987987;
-int N,M,K;
-vector<pair<int,int>>v[MX];
-int dist[MX];
-int arr[MX];
-int ans_d;
-int ans_n;
-int dijkstra(int st, int en){
-    priority_queue< pair<int,int> , vector<pair<int,int>>, greater<pair<int,int>>> pq;
-    fill(dist,dist+N+1,INF);
-    dist[st]=0;
-    pq.push({dist[st],st});
 
-    while(!pq.empty()){
-        int curCost = pq.top().first;
-        int curNode = pq.top().second;
-        if(curNode == en) return dist[en];
-        pq.pop();
-        if(dist[curNode] != curCost) continue;
-        for(int i=0;i<v[curNode].size();i++){
-            int nxCost = v[curNode][i].first;
-            int nxNode = v[curNode][i].second;
+const int MX = 5;
+int N,K;
+vector<pair<int,int>>v;
+vector<int>ans;
+vector<int>d;
+bool vis[MX];
+void back(int x){
+    if(x == K){
+        ans.clear();
+        for(int i=0;i<N;i++){
+            if(!vis[i])continue;
+            for(int j=0;j<N;j++){
+                if(!vis[j]){
+                    int dis = abs(v[i].first - v[j].first) + abs(v[i].second - v[j].second);
+                    ans.push_back(dis);
+                }
+            }
+        }
+        sort(ans.begin(),ans.end());
+        d.push_back(ans[0]);
 
-            if(dist[nxNode] > dist[curNode]+nxCost){
-                dist[nxNode] = dist[curNode]+nxCost;
-                pq.push({dist[nxNode],nxNode});
+        
+        return;
+    }
+    else{
+        for(int i=0;i<N;i++){
+            if(!vis[i]){
+                vis[i] = true;
+                back(x+1);
+                vis[i] = false;
             }
         }
     }
-    return INF;
 }
 int main(){
     ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-    cin >> N >> M >> K;
+    cin.tie(0); cout.tie(0);
+    cin >> N >> K;
+    for(int i=0;i<N;i++){
+        int a,b;
+        cin >> a >> b;
+        v.push_back({a,b});
+    }
 
-    while(M--){
-        int a,b,c;
-        cin >> a >> b >> c;
-        v[b].push_back({c,a});
-    }
-    for(int i=0;i<K;i++){
-        cin >> arr[i];       
-    }
-    for(int j=0;j<K;j++){
-        vector<pair<int,int>>a;
-        for(int i=1;i<=N;i++){
-            int ddd = dijkstra(arr[j],i);
-            if( ddd != INF){
-                a.push_back({ddd,i});
-            }
-        }
-        sort(a.begin(),a.end(),greater<>());
-        
-        ans_d = max(ans_d,a[0].first);
-        ans_n = max(ans_d,a[0].second);
-    }
-    cout << ans_n << '\n'; 
-    cout << ans_d << '\n';
+    back(0);
+
+    sort(d.begin(),d.end());
+    cout << d[0];    
     return 0;
 }
