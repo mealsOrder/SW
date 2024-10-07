@@ -27,7 +27,7 @@ int main(){
 
     for(int i=N-1;i>0;i--){
         for(int j=0;j<i;j++){
-            if(binary_search(hap.begin(),hap.end(),a[i]-a[j])){
+            if(binary_search(hap.begin(),hap.end(),u[i]-u[j])){
                 cout << u[i];
                 return 0;
             }
