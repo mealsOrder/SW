@@ -106,7 +106,13 @@ int main(){
             cin >> map[i][j];
         }
     }
+    vector<int>area;
+    for(int i=1;i<=6;i++){
+        area.push_back(i);
+    }
 
+    mt19937 g(static_cast<unsigned int>(time(0)));
+    shuffle(area.begin(),area.end(),g);
 
     init();
     for(int i=0;i<N;i++){
