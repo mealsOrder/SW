@@ -101,34 +101,66 @@ int main(){
     cout << "가로: ";
     cin >> M;
 
+    // 구역 나누기
+    /*
+        1 1 2 2 2
+        1 1 1 2 2
+        3 3 4 4 4
+        3 3 3 4 4
+        5 5 6 6 6
+        5 5 5 6 6
+    */
     for(int i=0;i<N;i++){
         for(int j=0;j<M;j++){
             cin >> map[i][j];
         }
     }
+    // 구역별 랜덤한 숫자 들어갈 벡터
+    vector<int>area;
 
+    // 11 22 33 44 55 66 을 벡터에 넣어줌
+    for(int i=1;i<=6;i++){
+        area.push_back(i*11);
+    }
 
-    init();
+    // 구역 숫자 셔플
+    mt19937 g(static_cast<unsigned int>(time(0)));
+    shuffle(area.begin(),area.end(),g);
+
     for(int i=0;i<N;i++){
         for(int j=0;j<M;j++){
+            // map값이 k와 같으면 map을 area[k-1] 값으로 변경
+            for(int k=1;k<=6;k++){
+                if(map[i][j] == k){
+                    map[i][j] = area[k-1];
+                }
+            }
+        }
+    }
+
+    init(); // 초기화
+
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            // 해당 좌표를 방문 하지 않았으면
             if(!vis[i][j]){
-                if(map[i][j] == 1){
-                    DFS(i,j,arr1,1);
+                if(map[i][j] == 11){
+                    DFS(i,j,arr1,11);
                 }
-                else if(map[i][j] == 2){
-                    DFS(i,j,arr2,2);
+                else if(map[i][j] == 22){
+                    DFS(i,j,arr2,22);
                 }
-                else if(map[i][j] == 3){
-                    DFS(i,j,arr3,3);
+                else if(map[i][j] == 33){
+                    DFS(i,j,arr3,33);
                 }
-                else if(map[i][j] == 4){
-                    DFS(i,j,arr4,4);
+                else if(map[i][j] == 44){
+                    DFS(i,j,arr4,44);
                 }
-                else if(map[i][j] == 5){
-                    DFS(i,j,arr5,5);
+                else if(map[i][j] == 55){
+                    DFS(i,j,arr5,55);
                 }
-                else if(map[i][j] == 6){
-                    DFS(i,j,arr6,6);
+                else if(map[i][j] == 66){
+                    DFS(i,j,arr6,66);
                 }
             }
         }
