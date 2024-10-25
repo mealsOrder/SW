@@ -16,8 +16,9 @@ VEDA 사람들 마다 고유의 번호가 있는데
 # 사용법
 - 총인원, 세로, 가로 입력
 - 영역 입력
-- ex. 같은 숫자 끼리 같은조
-
+- 같은 숫자 끼리 같은조
+    ex.
+    
     1 1 2 2 2
 
     1 1 1 2 2
@@ -29,15 +30,14 @@ VEDA 사람들 마다 고유의 번호가 있는데
     5 5 6 6 6
 
     5 5 5 6 6
-    
-- 칠판을 기준으로 자리 배치
 
 # 입력 예시
 ![입력예시](https://github.com/mealsOrder/SW/blob/main/project/teamMake/area.png)
 
 # 조 구성 방법
-- 고유 번호로 직접 초기화
 ![조구성](https://github.com/mealsOrder/SW/blob/main/project/teamMake/arr.png)
+
+- 고유 번호로 직접 초기화
 
 # 결과 화면
 ![결과화면](https://github.com/mealsOrder/SW/blob/main/project/teamMake/result.png)
