@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+typedef long long ll;
 // 컴파일러의 파싱(Parsing)과 추상 구문 트리(Abstract Syntax Tree, AST) 생성 과정
 int main() {
     cout << ">> int x = 5;\n";

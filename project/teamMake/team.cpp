@@ -10,12 +10,17 @@ const int MX = 6;
 int T,N,M;
 
 // 각조 초기화
-vector<int>arr1 = {20,28,6,10,90};
-vector<int>arr2 = {24,18,91,92,93};
-vector<int>arr3 = {30,26,22,4,30};
-vector<int>arr4 = {1 ,3, 25,9,94};
-vector<int>arr5 = {19,7,5,13,96};
-vector<int>arr6 = {8,17,97,98,99};
+vector<int>arr1 = {2,11,12,21,26}; // 규진 태훈 한빈 윤재 세기
+
+vector<int>arr2 = {7,13,14,16,23}; // 재혁 효진 희진 현정 인학
+
+vector<int>arr3 = {1,3,20,22,25}; // 철환 나형 준형 준호 채훈
+
+vector<int>arr4 = {4,9, 15,29,30}; // 민기 준섭 세영 지환 수빈
+
+vector<int>arr5 = {5,8,19,24,27}; // 시현A 정은 혜경 승진 기성
+
+vector<int>arr6 = {6,10,17,18,28}; // 시현B 태원 현준 기윤 형근 
 
 // 방향 벡터
 int dx[] = {0,0,1,-1};
@@ -123,6 +128,21 @@ int main(){
         area.push_back(i*11);
     }
 
+    // vector<int>all;
+    // for(int i=0;i<5;i++){
+    //     all.push_back(arr1[i]);
+    //     all.push_back(arr2[i]);
+    //     all.push_back(arr3[i]);
+    //     all.push_back(arr4[i]);
+    //     all.push_back(arr5[i]);
+    //     all.push_back(arr6[i]);
+    // }
+
+    // sort(all.begin(),all.end());
+    // for(int i=0;i<30;i++){
+    //     cout << all[i] << " ";
+    // }
+    // cout << "\n";
     // 구역 숫자 셔플
     mt19937 g(static_cast<unsigned int>(time(0)));
     shuffle(area.begin(),area.end(),g);
