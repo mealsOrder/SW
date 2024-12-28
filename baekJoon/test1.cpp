@@ -1,64 +1,23 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<queue>
-
+#include<map>
 using namespace std;
-
-const int MAX = 101;
-int map[MAX][MAX];
-int dist[MAX][MAX];
-bool visited[MAX][MAX];
-int dx[4]={0,0,1,-1};
-int dy[4]={1,-1,0,0};
-
-queue<pair<int,int>> q;
-int N,M;
-
-int BFS(){
-	q.push({1,1});
-	dist[1][1]=1;
-	visited[1][1] = true;
-	
-	while(!q.empty()){
-		int x = q.front().first;
-		int y = q.front().second;
-		q.pop();
-		
-		if(x==N && y==M) return dist[N][M];
-		
-		for(int i=0;i<4;i++){
-			int nx=x+dx[i];
-			int ny=y+dy[i];
-			
-			if(nx>0 && nx<=N && ny>0 &&ny<=M && map[nx][ny]==1 &&!visited[nx][ny] ){
-				dist[nx][ny] = dist[x][y]+1;
-				q.push({nx,ny});
-				visited[nx][ny] = true;
-			}
-			
-		}
-		
-	}
-	
-	
-	return -1;
-	
-}
-
 int main(){
-	
-	cin >> N >> M;
-	for(int i=1;i<=N;i++){
-		for(int j=1;j<=M;j++){
-			scanf("%1d",&map[i][j]);
-		}
-	}
-    
-	int ans = BFS();
-	
-	cout << ans << endl;
-	
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
 
-	return 0;
+	cout << "    8888888888  888    88888\n";
+	cout << "   88     88   88 88   88  88\n";
+	cout << "    8888  88  88   88  88888\n";
+	cout << "       88 88 888888888 88   88\n";
+	cout << "88888888  88 88     88 88    888888\n";
+	cout << "\n";
+	cout << "88  88  88   888    88888    888888\n";
+	cout << "88  88  88  88 88   88  88  88\n";
+	cout << "88 8888 88 88   88  88888    8888\n";
+	cout << " 888  888 888888888 88  88      88\n";
+	cout << "  88  88  88     88 88   88888888\n";
+
+    return 0;
 }
