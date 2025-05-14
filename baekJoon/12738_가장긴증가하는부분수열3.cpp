@@ -19,15 +19,15 @@ int main(){
     int idx = 0;
     B[0] = A[0];
 
-    for(int i=0;i<N;i++){
+    for(int i=1;i<N;i++){
         if(A[i] > B[idx]){
             B[++idx] = A[i];
         }
         else{
-            int loc = lower_bound(B,B+idx,A[i])-B;
+            int loc = lower_bound(B,B+idx+1,A[i])-B;
             B[loc] = A[i];
         }
     }
-    cout << idx << '\n';
+    cout << idx+1 << '\n';
 	return 0;
 }
