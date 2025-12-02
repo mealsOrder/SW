@@ -1,63 +1,68 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int MX = 101;
-int n,m;
+int n, m;
 int board[MX][MX];
-int dx[] = {0,0,1,-1};
-int dy[] = {1,-1,0,0};
-int cnt;
 bool vis[MX][MX];
 
-queue<pair<int,int>>q;
+// 8방향
+int dx[] = {-1,-1,-1,0,0,1,1,1};
+int dy[] = {-1,0,1,-1,1,-1,0,1};
 
-void bfs(int x,int y){
-    if(board[x][y]){
-        vis[x][y]=1;
-        q.push({x,y});
-    }
+bool bfs(int sx, int sy) {
+    queue<pair<int,int>> q;
+    q.push({sx, sy});
+    vis[sx][sy] = true;
 
-    while(!q.empty()){
-        int curX = q.front().first;
-        int curY = q.front().second;
+    int h = board[sx][sy];     // 현재 평탄면(plateau)의 높이
+    bool isPeak = true;        // 산봉우리인지 여부
+
+    while (!q.empty()) {
+        auto [x, y] = q.front();
         q.pop();
 
-        for(int i=0;i<4;i++){
-            int nx = curX+dx[i];
-            int ny = curY+dy[i];
+        for (int dir = 0; dir < 8; dir++) {
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
 
-            if(nx>=0 && nx<n && ny>=0 && ny<m && board[nx][ny] !=0 && !vis[nx][ny] ){
-                vis[nx][ny] = 1;
-                q.push({nx,ny});
+            if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+
+            if (board[nx][ny] > h) {
+                // 주변에 더 높은 곳이 하나라도 있다 → 산봉우리 아님
+                isPeak = false;
+            }
+
+            // 같은 높이이면서 아직 방문 X → 같은 봉우리 덩어리
+            if (!vis[nx][ny] && board[nx][ny] == h) {
+                vis[nx][ny] = true;
+                q.push({nx, ny});
             }
         }
     }
-    cnt++;
+
+    return isPeak;
 }
 
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);	cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-	
-	cin >> n >> m;
-
-	for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin >> board[i][j];
         }
     }
 
-    bfs(0,0);
+    int cnt = 0;
 
-
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            
-            if(!vis[i][j] && board[i][j] != 0)bfs(i,j);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            // 아직 안 봤고, 높이가 0보다 큰 칸에서만 시작
+            if (!vis[i][j] && board[i][j] > 0) {
+                if (bfs(i, j)) cnt++;
+            }
         }
     }
 
